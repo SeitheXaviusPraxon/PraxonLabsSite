@@ -3,47 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRAXON LABS | Interface</title>
+    <title>PRAXON LABS // Core</title>
     <link rel="stylesheet" href="./style.css">
-    <!-- Monospace font for that technical, clinical data look -->
-    <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Subtle background grid lines to hint at a technical blueprint or glass layout -->
-    <div class="grid-overlay"></div>
+    <!-- Main technical interface viewport -->
+    <main class="container">
+        
+        <header>
+            <div class="sys-id">DATA_STREAM // PX-992</div>
+            <h1>PRAXON LABS</h1>
+            <p class="muted-text">CLASSIFIED EXPERIMENTAL ENVIRONMENT</p>
+        </header>
 
-    <header>
-        <div class="logo">PRAXON//LABS</div>
-        <div class="status-indicator">SYSTEM: ACTIVE</div>
-    </header>
-
-    <main class="hologram-container">
-        <section class="panel">
-            <div class="panel-header">CORE_INTERFACE_v1.04</div>
-            <h1>SYSTEM OVERVIEW</h1>
-            <p>Welcome to the Praxon Labs primary node. Terminal data pipelines are successfully established. Initialize sub-routines below.</p>
-            <div class="data-readout">
-                <span>SYS_TEMP: 34.2°C</span>
-                <span>LATENCY: 12ms</span>
-            </div>
-            <button class="holo-btn">INITIALIZE SCAN</button>
-        </section>
-
-        <section class="panel secondary">
-            <div class="panel-header">NETWORK_LOGS</div>
-            <h3>ACTIVE PROJECTS</h3>
-            <ul class="project-list">
-                <li><span class="bullet">■</span> Prowler Protocol</li>
-                <li><span class="bullet">■</span> Radar Array</li>
-                <li><span class="bullet">■</span> Transmission Feed</li>
+        <section class="content">
+            <h2>LOG_ENTRY // SYSTEM_INITIALIZED</h2>
+            <p>Welcome to the secure Praxon Labs node. Core operations have been successfully decoupled from secondary arrays. Standing by for administrative input.</p>
+            
+            <h3>PROJECT DIRECTORIES</h3>
+            <p>Access to project data pipelines requires cryptographic validation. Select a local directory node to monitor active feeds:</p>
+            
+            <!-- Standard list structure that hooks into your light blue/white CSS -->
+            <ul>
+                <li><a href="#terminal">Terminal Console Interface</a></li>
+                <li><a href="#telemetry">Sensor & Radar Telemetry</a></li>
+                <li><a href="#archives">Encrypted Data Archives</a></li>
+                <li><a href="#protocols">Project Prowler Protocols</a></li>
             </ul>
         </section>
-    </main>
 
-    <footer>
-        &copy; 2026 PRAXON LABS. ALL RIGHTS RESERVED.
-    </footer>
+        <!-- Command Module -->
+        <section class="actions">
+            <button type="button" class="btn" onclick="console.log('DIAGNOSTIC RUNNING...'); alert('DECRYPT_SEQUENCE: ERROR [ACCESS_DENIED]')">ACCESS INTERFACE</button>
+        </section>
+
+    </main>
 
 </body>
 </html>
