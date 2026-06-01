@@ -1,11 +1,13 @@
-/* --- Imperial Terminal Color Palette & Reset --- */
+/* --- Global Reset & Theme Variables --- */
 :root {
-    --terminal-bg: #050b06;
-    --terminal-glow: rgba(51, 255, 51, 0.15);
-    --text-primary: #33ff33;
-    --text-muted: #11aa11;
-    --alert-color: #ff3333;
-    --font-terminal: 'Courier New', Courier, monospace;
+    --bg-clinical: #ffffff;
+    --text-dark: #1e293b;
+    --text-muted: #64748b;
+    --holo-bright: #00a3ff; /* Bright mid-range hologram blue */
+    --holo-mid: #0284c7;    /* Deep mid-range cyan-blue */
+    --holo-glow: rgba(0, 163, 255, 0.12);
+    --border-light: rgba(2, 132, 199, 0.2);
+    --font-mono: 'JetBrains Mono', monospace;
 }
 
 * {
@@ -15,176 +17,202 @@
 }
 
 body {
-    background-color: var(--terminal-bg);
-    color: var(--text-primary);
-    font-family: var(--font-terminal);
-    padding: 20px;
+    background-color: var(--bg-clinical);
+    color: var(--text-dark);
+    font-family: var(--font-mono);
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     overflow-x: hidden;
-    text-shadow: 0 0 4px var(--text-primary);
+    position: relative;
 }
 
-/* --- CRT Scanline Overlay effect --- */
-.scanlines {
-    position: fixed;
+/* --- Technical Blueprint Background Grid --- */
+.grid-overlay {
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        rgba(18, 16, 16, 0) 50%, 
-        rgba(0, 0, 0, 0.25) 50%
-    );
-    background-size: 100% 4px;
-    z-index: 100;
-    pointer-events: none; /* Allows clicking through the overlay */
+    background-image: 
+        linear-gradient(to right, rgba(0, 163, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 163, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    z-index: 0;
+    pointer-events: none;
 }
 
-/* --- Main Framework --- */
-.terminal-container {
-    width: 100%;
-    max-width: 1000px;
-    border: 2px solid var(--text-primary);
-    background-color: rgba(5, 11, 6, 0.9);
-    padding: 30px;
-    box-shadow: 0 0 20px var(--terminal-glow);
+/* --- Header --- */
+header {
     position: relative;
-}
-
-.terminal-divider {
-    border: 0;
-    height: 1px;
-    background: var(--text-primary);
-    margin: 20px 0;
-    box-shadow: 0 0 4px var(--text-primary);
-}
-
-/* --- Header Styling --- */
-.terminal-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.terminal-header h1 {
-    font-size: 2.2rem;
-    letter-spacing: 2px;
-}
-
-.subtitle {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-top: 5px;
-}
-
-.header-right {
-    text-align: right;
-    font-size: 0.85rem;
-}
-
-.security-badge {
-    background-color: var(--text-primary);
-    color: var(--terminal-bg);
-    padding: 2px 6px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-shadow: none;
-}
-
-.clearance-level {
-    color: var(--text-muted);
-}
-
-/* --- Body Sections --- */
-.manifesto-section h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.manifesto-text {
-    line-height: 1.6;
-    color: var(--text-primary);
-}
-
-/* --- Two-Column Layout --- */
-.terminal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-    margin: 25px 0;
-}
-
-@media (max-width: 768px) {
-    .terminal-grid {
-        grid-template-columns: 1fr;
-    }
-    .terminal-header, .header-right, .terminal-footer {
-        text-align: left;
-    }
-    .header-right {
-        width: 100%;
-    }
-}
-
-.grid-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 15px;
-    border-bottom: 1px dashed var(--text-primary);
-    padding-bottom: 5px;
-}
-
-.grid-card p, .grid-card ul {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-.grid-card ul {
-    list-style-type: "- ";
-    list-style-position: inside;
-}
-
-.grid-card li {
-    margin-bottom: 10px;
-}
-
-.grid-card strong {
-    color: #fff; /* Slight contrast for emphasis */
-}
-
-/* --- Footer & ARG Mechanics --- */
-.terminal-footer {
+    z-index: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.logo {
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--holo-mid);
+    text-shadow: 0 0 8px var(--holo-glow);
+}
+
+.status-indicator {
     font-size: 0.8rem;
+    color: #059669; /* Clinical green for active status */
+    background: rgba(5, 150, 105, 0.1);
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(5, 150, 105, 0.2);
+}
+
+/* --- Layout Container --- */
+.hologram-container {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    padding: 40px;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* --- Clinical/Holographic Panels --- */
+.panel {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--border-light);
+    border-radius: 4px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 4px 20px var(--holo-glow);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.panel:hover {
+    border-color: var(--holo-bright);
+    box-shadow: 0 0 25px rgba(0, 163, 255, 0.25);
+}
+
+.panel-header {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    transform: translateY(-50%);
+    background: var(--bg-clinical);
+    padding: 0 10px;
+    font-size: 0.75rem;
+    color: var(--holo-mid);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+h1, h3 {
+    color: var(--text-dark);
+    font-weight: 400;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+}
+
+h1 {
+    font-size: 2rem;
+    border-bottom: 1px dashed var(--border-light);
+    padding-bottom: 10px;
+}
+
+p {
     color: var(--text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
 }
 
-/* The Secret Hook */
-.slicer-glitch {
-    color: var(--alert-color);
-    text-decoration: none;
-    font-weight: bold;
-    text-shadow: 0 0 4px var(--alert-color);
+/* --- Technical Data & Readouts --- */
+.data-readout {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    font-size: 0.85rem;
+    color: var(--holo-mid);
+}
+
+.data-readout span {
+    background: var(--holo-glow);
+    padding: 6px 12px;
+    border-radius: 2px;
+    border: 1px solid rgba(0, 163, 255, 0.2);
+}
+
+/* --- Interactive Hologram Button --- */
+.holo-btn {
+    font-family: var(--font-mono);
+    background: transparent;
+    color: var(--holo-mid);
+    border: 1px solid var(--holo-mid);
+    padding: 12px 24px;
     cursor: pointer;
-    animation: blink 2s infinite;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
 }
 
-.slicer-glitch:hover {
-    background-color: var(--alert-color);
-    color: var(--terminal-bg);
-    text-shadow: none;
+.holo-btn:hover {
+    background: var(--holo-bright);
+    color: #ffffff;
+    box-shadow: 0 0 15px var(--holo-bright);
+    border-color: var(--holo-bright);
 }
 
-/* Terminal Blinking Animation for the ARG prompt */
-@keyframes blink {
-    0%, 49% { opacity: 1; }
-    50%, 100% { opacity: 0.4; }
+/* --- List Styles --- */
+.project-list {
+    list-style: none;
+}
+
+.project-list li {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    display: flex;
+    align-items: center;
+}
+
+.bullet {
+    color: var(--holo-bright);
+    margin-right: 10px;
+    font-size: 0.8rem;
+    text-shadow: 0 0 5px var(--holo-bright);
+}
+
+/* --- Footer --- */
+footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-light);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Responsive Layout for Mobile Screens --- */
+@media (max-width: 768px) {
+    .hologram-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+    header {
+        padding: 20px;
+    }
 }
