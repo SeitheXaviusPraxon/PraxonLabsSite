@@ -1,30 +1,62 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praxon Labs</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff; 
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-    </style>
+    <title>Praxon Labs // Imperial HoloNet Portal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="scanlines"></div>
 
-    <img src="PraxonLabsLogo.jpg" alt="Praxon Labs">
+    <div class="terminal-container">
+        <header class="terminal-header">
+            <div class="header-left">
+                <h1>PRAXON LABS</h1>
+                <p class="subtitle">EST. 5000 BBY // CORE COMPASS: CORULAG</p>
+            </div>
+            <div class="header-right">
+                <div class="security-badge">SECURE CONNECTION: HOLONET_E-4</div>
+                <div class="clearance-level">CLEARANCE: EPSILON-9</div>
+            </div>
+        </header>
 
-<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"b412be2ac2154dd9914fec721b1c3c87","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+        <hr class="terminal-divider">
+
+        <section class="manifesto-section">
+            <h2>[ OBJECTIVE OVERVIEW ]</h2>
+            <p class="manifesto-text">
+                Securing the future of the New Order through unparalleled tactical innovation. Praxon Labs does not manufacture; we perfect. For five millennia, the Praxon lineage has provided the intellectual vanguard for galactic defense, optimizing the instruments of order and stability.
+            </p>
+        </section>
+
+        <div class="terminal-grid">
+            <section class="grid-card">
+                <h3>// CORE CAPABILITIES</h3>
+                <ul>
+                    <li><strong>Ballistic & Shield Optimization:</strong> Localized planetary grid refinement.</li>
+                    <li><strong>Tactical Systems Integration:</strong> Advanced targeting telemetry for Sienar Fleet Systems.</li>
+                    <li><strong>I-DoMR Consultation:</strong> Tier-1 R&D advisory to the Imperial Department of Military Research.</li>
+                </ul>
+            </section>
+
+            <section class="grid-card">
+                <h3>// THE PRAXON DYNASTY</h3>
+                <p><strong>Current Primus Governance:</strong> All corporate and research directives are unified under the eldest living lineage head at the High Estate, Corulag.</p>
+                <p><strong>Officer Pipeline:</strong> Proud contributors to the Corulag Military Academy. Cultivating tactical precision for the Imperial Fleet.</p>
+            </section>
+        </div>
+
+        <hr class="terminal-divider">
+
+        <footer class="terminal-footer">
+            <div class="footer-left">
+                <p>&copy; LOCALIZED DATA TERMINAL // PROPERTY OF IMPERIAL ADMINISTRATION</p>
+            </div>
+            <div class="footer-right">
+                <a href="/archive-g4.html" class="slicer-glitch">[SLICER ALERT: UNRESOLVED GLITCH IN ARCHIVE SECTOR G-4]</a>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
