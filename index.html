@@ -3,60 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praxon Labs // Imperial HoloNet Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <title>PRAXON LABS | Interface</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- Monospace font for that technical, clinical data look -->
+    <link href="https://googleapis.com" rel="stylesheet">
 </head>
 <body>
-    <div class="scanlines"></div>
 
-    <div class="terminal-container">
-        <header class="terminal-header">
-            <div class="header-left">
-                <h1>PRAXON LABS</h1>
-                <p class="subtitle">EST. 5000 BBY // CORE COMPASS: CORULAG</p>
+    <!-- Subtle background grid lines to hint at a technical blueprint or glass layout -->
+    <div class="grid-overlay"></div>
+
+    <header>
+        <div class="logo">PRAXON//LABS</div>
+        <div class="status-indicator">SYSTEM: ACTIVE</div>
+    </header>
+
+    <main class="hologram-container">
+        <section class="panel">
+            <div class="panel-header">CORE_INTERFACE_v1.04</div>
+            <h1>SYSTEM OVERVIEW</h1>
+            <p>Welcome to the Praxon Labs primary node. Terminal data pipelines are successfully established. Initialize sub-routines below.</p>
+            <div class="data-readout">
+                <span>SYS_TEMP: 34.2°C</span>
+                <span>LATENCY: 12ms</span>
             </div>
-            <div class="header-right">
-                <div class="security-badge">SECURE CONNECTION: HOLONET_E-4</div>
-                <div class="clearance-level">CLEARANCE: EPSILON-9</div>
-            </div>
-        </header>
-
-        <hr class="terminal-divider">
-
-        <section class="manifesto-section">
-            <h2>[ OBJECTIVE OVERVIEW ]</h2>
-            <p class="manifesto-text">
-                Securing the future of the New Order through unparalleled tactical innovation. Praxon Labs does not manufacture; we perfect. For five millennia, the Praxon lineage has provided the intellectual vanguard for galactic defense, optimizing the instruments of order and stability.
-            </p>
+            <button class="holo-btn">INITIALIZE SCAN</button>
         </section>
 
-        <div class="terminal-grid">
-            <section class="grid-card">
-                <h3>// CORE CAPABILITIES</h3>
-                <ul>
-                    <li><strong>Ballistic & Shield Optimization:</strong> Localized planetary grid refinement.</li>
-                    <li><strong>Tactical Systems Integration:</strong> Advanced targeting telemetry for Sienar Fleet Systems.</li>
-                    <li><strong>I-DoMR Consultation:</strong> Tier-1 R&D advisory to the Imperial Department of Military Research.</li>
-                </ul>
-            </section>
+        <section class="panel secondary">
+            <div class="panel-header">NETWORK_LOGS</div>
+            <h3>ACTIVE PROJECTS</h3>
+            <ul class="project-list">
+                <li><span class="bullet">■</span> Prowler Protocol</li>
+                <li><span class="bullet">■</span> Radar Array</li>
+                <li><span class="bullet">■</span> Transmission Feed</li>
+            </ul>
+        </section>
+    </main>
 
-            <section class="grid-card">
-                <h3>// THE PRAXON DYNASTY</h3>
-                <p><strong>Current Primus Governance:</strong> All corporate and research directives are unified under the eldest living lineage head at the High Estate, Corulag.</p>
-                <p><strong>Officer Pipeline:</strong> Proud contributors to the Corulag Military Academy. Cultivating tactical precision for the Imperial Fleet.</p>
-            </section>
-        </div>
+    <footer>
+        &copy; 2026 PRAXON LABS. ALL RIGHTS RESERVED.
+    </footer>
 
-        <hr class="terminal-divider">
-
-        <footer class="terminal-footer">
-            <div class="footer-left">
-                <p>&copy; LOCALIZED DATA TERMINAL // PROPERTY OF IMPERIAL ADMINISTRATION</p>
-            </div>
-            <div class="footer-right">
-                <a href="/archive-g4.html" class="slicer-glitch">[SLICER ALERT: UNRESOLVED GLITCH IN ARCHIVE SECTOR G-4]</a>
-            </div>
-        </footer>
-    </div>
 </body>
 </html>
