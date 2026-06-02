@@ -3,93 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praxon Labs // Terminal System</title>
+    <title>Praxon Labs // Imperial HoloNet Portal</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="scanlines"></div>
 
     <div class="terminal-container">
-        <!-- System Header -->
+        <!-- Header Section -->
         <header class="terminal-header">
             <div class="header-left">
                 <h1>PRAXON LABS</h1>
-                <p class="subtitle">SYS_ACCESS: LOCAL_ARCHIVE_NODE</p>
+                <p class="subtitle">EST. 5000 BBY // CORE COMPASS: CORULAG</p>
             </div>
             <div class="header-right">
                 <div class="security-badge">SECURE CONNECTION: HOLONET_E-4</div>
-                <div class="clearance-level">LOGGED IN: AUTHORIZED_USER</div>
+                <div class="clearance-level">CLEARANCE: EPSILON-9</div>
             </div>
         </header>
 
         <hr class="terminal-divider">
 
+        <!-- Main Interface Split (Sidebar + Content View) -->
         <div class="terminal-workspace">
             
-            <!-- Navigation Sidebar (Adjust the 'active' class based on which page this is) -->
+            <!-- Left Sidebar Navigation Layout based on image_3b0f3a.jpg -->
             <nav class="terminal-sidebar">
-                <a href="index.html" class="nav-item">CORE</a>
-                <a href="overview.html" class="nav-item">OVERVIEW</a>
-                <a href="archives.html" class="nav-item active">ARCHIVES</a> <!-- Example: Active Page -->
-                <a href="projects.html" class="nav-item">PROJECTS</a>
-                <a href="staffing.html" class="nav-item">STAFFING</a>
-                <a href="uplink.html" class="nav-item">UPLINK</a>
+                <a href="#core" class="nav-item active">CORE</a>
+                <a href="#overview" class="nav-item">OVERVIEW</a>
+                <a href="#archives" class="nav-item">ARCHIVES</a>
+                <a href="#projects" class="nav-item">PROJECTS</a>
+                <a href="#staffing" class="nav-item">STAFFING</a>
+                <a href="#uplink" class="nav-item">UPLINK</a>
             </nav>
 
-            <!-- Main Subpage Display Frame -->
+            <!-- Right Content Area -->
             <main class="terminal-content">
-                <section class="dossier-frame">
-                    <div class="frame-header">[ DATA CATEGORY: SECURE REPOSITORY ]</div>
-                    
-                    <div class="data-block">
-                        <h3>// CLASSIFIED LOG RECOVERY</h3>
-                        <p class="placeholder-text">
-                            Data block synchronized successfully. Awaiting network decryption key... 
-                            System monitoring is active on this terminal. Unsanctioned downloading of Imperial tactical advisories or Corulag military blueprints will result in immediate flagging for ISB review.
-                        </p>
-                    </div>
-
-                    <!-- Clean layout utility for listing files, logs, or project rosters -->
-                    <div class="data-table-container">
-                        <table class="terminal-table">
-                            <thead>
-                                <tr>
-                                    <th>FILE_ID</th>
-                                    <th>DESIGNATION</th>
-                                    <th>STATUS</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#00481-A</td>
-                                    <td>Corulag Defense Grid Telemetry</td>
-                                    <td class="status-good">SECURED</td>
-                                </tr>
-                                <tr>
-                                    <td>#11942-X</td>
-                                    <td>SFS TIE/ln Targeting Matrix Advisory</td>
-                                    <td class="status-good">SECURED</td>
-                                </tr>
-                                <tr>
-                                    <td>#77310-G</td>
-                                    <td>[ENCRYPTED DATA FLOW]</td>
-                                    <td class="status-warn">CORRUPTED</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="data-block">
-                        <h3>// SYSTEM DIAGNOSTICS</h3>
-                        <p class="placeholder-text">All secondary server arrays operating within acceptable thermal parameters on Corulag Core Alpha.</p>
-                    </div>
+                <section class="manifesto-section">
+                    <h2>[ OBJECTIVE OVERVIEW ]</h2>
+                    <p class="manifesto-text">
+                        Securing the future of the New Order through unparalleled tactical innovation. Praxon Labs does not manufacture; we perfect. For five millennia, the Praxon lineage has provided the intellectual vanguard for galactic defense, optimizing the instruments of order and stability.
+                    </p>
                 </section>
+
+                <div class="terminal-grid">
+                    <section class="grid-card">
+                        <h3>// CORE CAPABILITIES</h3>
+                        <ul>
+                            <li><strong>Ballistic & Shield Optimization:</strong> Localized planetary grid refinement.</li>
+                            <li><strong>Tactical Systems Integration:</strong> Advanced targeting telemetry for Sienar Fleet Systems.</li>
+                            <li><strong>I-DoMR Consultation:</strong> Tier-1 R&D advisory to the Imperial Department of Military Research.</li>
+                        </ul>
+                    </section>
+
+                    <section class="grid-card">
+                        <h3>// THE PRAXON DYNASTY</h3>
+                        <p><strong>Current Primus Governance:</strong> All corporate and research directives are unified under the eldest living lineage head at the High Estate, Corulag.</p>
+                        <p><strong>Officer Pipeline:</strong> Proud contributors to the Corulag Military Academy. Cultivating tactical precision for the Imperial Fleet.</p>
+                    </section>
+                </div>
             </main>
             
         </div>
 
         <hr class="terminal-divider">
 
+        <!-- Footer / ARG Mechanics -->
         <footer class="terminal-footer">
             <div class="footer-left">
                 <p>&copy; LOCALIZED DATA TERMINAL // PROPERTY OF IMPERIAL ADMINISTRATION</p>
