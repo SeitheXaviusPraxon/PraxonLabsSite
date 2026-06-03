@@ -85,6 +85,32 @@ body {
 .header-right {
     text-align: right;
     font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.alert-button {
+    appearance: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-family: var(--font-terminal);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.alert-button:hover,
+.alert-button.active-alert {
+    background-color: var(--text-primary);
+    color: var(--terminal-bg);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.35);
 }
 
 .security-badge {

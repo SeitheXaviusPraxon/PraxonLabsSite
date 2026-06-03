@@ -16,6 +16,7 @@
                 <p class="subtitle">EST. 5000 BBY // CORE COMPASS: CORULAG</p>
             </div>
             <div class="header-right">
+                <button id="alert-toggle" class="alert-button" type="button">ALERT</button>
                 <div class="security-badge">SECURE CONNECTION: HOLONET_E-4</div>
                 <div class="clearance-level">CLEARANCE: EPSILON-9</div>
             </div>
@@ -69,5 +70,22 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        const alertButton = document.getElementById('alert-toggle');
+        const alertAudio = document.getElementById('imperial-alert-audio');
+
+        alertButton.addEventListener('click', () => {
+            if (alertAudio.paused) {
+                alertAudio.play();
+                alertButton.classList.add('active-alert');
+                alertButton.textContent = 'ALERT ON';
+            } else {
+                alertAudio.pause();
+                alertButton.classList.remove('active-alert');
+                alertButton.textContent = 'ALERT';
+            }
+        });
+    </script>
 </body>
 </html>
