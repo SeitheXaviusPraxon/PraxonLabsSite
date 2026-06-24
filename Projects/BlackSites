@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxon Labs // COMPLIANCE REGISTRY</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        /* Internal override styles to give the Black Sites section an ominous, restricted feel */
+        :root {
+            --text-primary: #ff3333; /* Shifts terminal text color to high-alert red */
+            --text-muted: #aa2222;
+            --terminal-glow: rgba(255, 0, 0, 0.15);
+        }
+        
+        .scandoc-selector-container {
+            margin: 25px 0 15px 0;
+            background: rgba(20, 5, 5, 0.6);
+            padding: 15px;
+            border: 1px dashed var(--text-primary);
+        }
+
+        .scandoc-label {
+            font-weight: bold;
+            letter-spacing: 1px;
+            margin-right: 15px;
+            font-size: 0.95rem;
+        }
+
+        .terminal-dropdown {
+            background-color: #000000;
+            color: var(--text-primary);
+            border: 1px solid var(--text-primary);
+            font-family: var(--font-terminal);
+            padding: 6px 12px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 0 5px var(--terminal-glow);
+        }
+
+        .terminal-dropdown option {
+            background-color: #000000;
+            color: var(--text-primary);
+        }
+
+        .scandoc-viewer {
+            min-height: 200px;
+            border: 1px solid var(--text-primary);
+            background-color: rgba(5, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            white-space: pre-wrap; /* Keeps custom line breaks intact */
+            box-shadow: inset 0 0 15px rgba(255, 0, 0, 0.2);
+        }
+        
+        .placeholder-text {
+            color: var(--text-muted);
+            font-style: italic;
+            text-align: center;
+            padding-top: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanlines"></div>
+    <audio id="imperial-alert-audio" src="../imperial-alert.mp3" preload="auto" loop></audio>
+    
+    <div class="terminal-container">
+        <header class="terminal-header">
+            <div class="header-left">
+                <h1>PRAXON LABS</h1>
+                <p class="subtitle">EST. 5000 BBY // CORE COMPASS: CORULAG</p>
+            </div>
+            <div class="header-right">
+                <button id="alert-toggle" class="alert-button" type="button">ALERT</button>
+                <div class="security-badge" style="background-color: #ff3333; color: #000;">RESTRICTED COMPLIANCE NODE</div>
+                <div class="clearance-level">CLEARANCE: IMPERIAL_AUDIT_ONLY</div>
+            </div>
+        </header>
+
+        <hr class="terminal-divider">
+
+        <div class="terminal-workspace">
+            <nav class="terminal-sidebar">
+                <a href="/index.html" class="nav-item">CORE</a>
+                <a href="/Overview/index.html" class="nav-item">OVERVIEW</a>
+                <a href="/Archives/index.html" class="nav-item">ARCHIVES</a>
+                <a href="/Projects/index.html" class="nav-item">PROJECTS</a>
+                <a href="/Staffing/index.html" class="nav-item">STAFFING</a>
+                <a href="/Uplink/index.html" class="nav-item">UPLINK</a>
+            </nav>
+
+            <main class="terminal-content">
+                <section class="manifesto-section">
+                    <h2>[ COMPLIANCE REGISTRY // REQ-882-B ]</h2>
+                    <p class="manifesto-text">
+                        In strict compliance with Imperial Decree 104-B regarding corporate governance, transparency, and standard disclosure policies within sectors operating under Imperial oversight, Praxon Labs maintains this secure index of deactivated, isolated, or repurposed research initiatives.
+                    </p>
+                    <p class="manifesto-text" style="margin-top: 10px; color: var(--text-muted);">
+                        Notice: Data streams decrypted below are cleared solely for Imperial planetary auditors and ComScan inspection arrays. Distribution is punishable by immediate asset seizure.
+                    </p>
+                </section>
+
+                <div class="scandoc-selector-container">
+                    <label class="scandoc-label" for="scandoc-select">CHOOSE SCANDOC:</label>
+                    <select id="scandoc-select" class="terminal-dropdown">
+                        <option value="">-- SELECT CLASSIFIED LOG --</option>
+                        <option value="shadownet">PROJECT SHADOWNET</option>
+                        <option value="lightshade">PROJECT LIGHTSHADE</option>
+                        </select>
+                </div>
+
+                <div id="scandoc-display" class="scandoc-viewer">
+                    <div class="placeholder-text">[ TERMINAL IDLE: SELECT VALID IMPERIAL SCANDOC CREDENTIALS TO INITIALIZE DECRYPTION ]</div>
+                </div>
+            </main>
+        </div>
+
+        <hr class="terminal-divider">
+
+        <footer class="terminal-footer">
+            <div class="footer-left">
+                <p>&copy; LOCALIZED DATA TERMINAL // COMPLIANCE INDEX SYSTEM</p>
+            </div>
+            <div class="footer-right">
+                <a href="/Projects/index.html" class="slicer-glitch" style="color: var(--text-primary); text-shadow: 0 0 4px var(--text-primary);">&lt; RETURN TO SECURE WORKSPACE &gt;</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Database of classified corporate disclosure logs
+        const scandocDatabase = {
+            shadownet: `[ IMPERIAL SCANDOC // REF: SHADOWNET ]
+------------------------------------------------------------------
+SECURITY CLEARANCE: OVERSEER EYES ONLY
+STATUS: QUARANTINED / TERMINATED
+DECRYPTION STAMP: SUCCESSFUL
+
+<STORY FOR PROJECT SHADOWNET HERE>`,
+
+            lightshade: `[ IMPERIAL SCANDOC // REF: LIGHTSHADE ]
+------------------------------------------------------------------
+SECURITY CLEARANCE: OVERSEER EYES ONLY
+STATUS: ABANDONED / CONTAINMENT ACTIVE
+DECRYPTION STAMP: SUCCESSFUL
+
+<STORY FOR PROJECT LIGHTSHADE HERE>`
+        };
+
+        const selectElement = document.getElementById('scandoc-select');
+        const displayElement = document.getElementById('scandoc-display');
+
+        // Event listener to monitor dropdown changes and flip the text underneath
+        selectElement.addEventListener('change', (e) => {
+            const selectedProject = e.target.value;
+            
+            if (selectedProject && scandocDatabase[selectedProject]) {
+                displayElement.innerHTML = scandocDatabase[selectedProject];
+            } else {
+                displayElement.innerHTML = `<div class="placeholder-text">[ TERMINAL IDLE: SELECT VALID IMPERIAL SCANDOC CREDENTIALS TO INITIALIZE DECRYPTION ]</div>`;
+            }
+        });
+
+        // Audio alert system controller logic
+        const alertButton = document.getElementById('alert-toggle');
+        const alertAudio = document.getElementById('imperial-alert-audio');
+
+        alertButton.addEventListener('click', () => {
+            if (alertAudio.paused) {
+                alertAudio.play();
+                alertButton.classList.add('active-alert');
+                alertButton.textContent = 'ALERT ON';
+            } else {
+                alertAudio.pause();
+                alertButton.classList.remove('active-alert');
+                alertButton.textContent = 'ALERT';
+            }
+        });
+    </script>
+</body>
+</html>
