@@ -3,199 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Praxon Labs // Account Gateway</title>
-    <style>
-        body {
-            background-color: #000000;
-            color: #00ffff;
-            font-family: 'Courier New', Courier, monospace;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-        .terminal-frame {
-            border: 1px solid #00ffff;
-            width: 90vw;
-            max-width: 1000px;
-            height: 85vh;
-            padding: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.15);
-        }
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            border-bottom: 1px solid #00ffff;
-            padding-bottom: 15px;
-            margin-bottom: 20px;
-        }
-        .logo-area h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-            text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
-        }
-        .sub-logo {
-            font-size: 0.75rem;
-            color: #00aaaa;
-            margin-top: 5px;
-        }
-        .header-meta {
-            text-align: right;
-            font-size: 0.75rem;
-            color: #00aaaa;
-            line-height: 1.4;
-        }
-        .alert-box {
-            border: 1px solid #00ffff;
-            padding: 2px 8px;
-            display: inline-block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .body-layout {
-            display: flex;
-            flex: 1;
-            gap: 30px;
-        }
-        .sidebar {
-            width: 180px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            border-right: 1px solid rgba(0, 255, 255, 0.3);
-            padding-right: 15px;
-        }
-        .nav-link {
-            color: #00ffff;
-            text-decoration: none;
-            padding: 8px 10px;
-            font-size: 0.9rem;
-            display: block;
-        }
-        .nav-link:hover, .nav-link.active {
-            background-color: #00ffff;
-            color: #000000;
-            font-weight: bold;
-        }
-        .content-area {
-            flex: 1;
-            overflow-y: auto;
-        }
-        .section-title {
-            font-size: 1rem;
-            margin-top: 0;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-            max-width: 400px;
-        }
-        label {
-            display: block;
-            font-size: 0.8rem;
-            color: #00aaaa;
-            margin-bottom: 5px;
-        }
-        input {
-            width: 100%;
-            background: #000000;
-            border: 1px solid #00ffff;
-            color: #00ffff;
-            padding: 8px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        input:focus {
-            outline: none;
-            box-shadow: 0 0 5px #00ffff;
-        }
-        button {
-            background: #00ffff;
-            color: #000000;
-            border: none;
-            padding: 10px 20px;
-            font-weight: bold;
-            font-family: inherit;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        button:hover {
-            background: #008888;
-            color: #ffffff;
-        }
-        #status {
-            margin-top: 15px;
-            font-size: 0.85rem;
-            white-space: pre-wrap;
-        }
-    </style>
+    <title>Praxon Labs // Account Uplink</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="scanlines"></div>
 
-    <div class="terminal-frame">
-        <!-- Header -->
-        <div class="header">
-            <div class="logo-area">
+    <div class="terminal-container">
+        <header class="terminal-header">
+            <div class="header-left">
                 <h1>PRAXON LABS</h1>
-                <div class="sub-logo">EST. 5000 BBY // CORE COMPASS: CORULAG</div>
+                <p class="subtitle">EST. 5000 BBY // CORE COMPASS: CORULAG</p>
             </div>
-            <div class="header-meta">
-                <div><span class="alert-box">ALERT</span></div>
-                <div>SECURE CONNECTION: HOLONET_E-4</div>
-                <div>CLEARANCE: EPSILON-9</div>
+            <div class="header-right">
+                <button id="alert-toggle" class="alert-button" type="button">ALERT</button>
+                <div class="security-badge">SECURE CONNECTION: HOLONET_E-4</div>
+                <div class="clearance-level">CLEARANCE: EPSILON-9</div>
             </div>
+        </header>
+
+        <hr class="terminal-divider">
+
+        <div class="terminal-workspace">
+            <nav class="terminal-sidebar">
+                <a href="index.html" class="nav-item">CORE</a>
+                <a href="Overview/index.html" class="nav-item">OVERVIEW</a>
+                <a href="Archives/index.html" class="nav-item">ARCHIVES</a>
+                <a href="Projects/index.html" class="nav-item">PROJECTS</a>
+                <a href="Staffing/index.html" class="nav-item">STAFFING</a>
+                <a href="register.html" class="nav-item active">UPLINK / REG</a>
+            </nav>
+
+            <main class="terminal-content">
+                <section class="manifesto-section">
+                    <h2>[ ACCOUNT INITIALIZATION PROTOCOL ]</h2>
+                    <p class="manifesto-text">
+                        Secure credential provisioning for the Praxon Labs localized game server network. Enter parameters below to deploy a new user record.
+                    </p>
+                </section>
+
+                <div class="terminal-grid">
+                    <section class="grid-card" style="grid-column: span 2; max-width: 450px;">
+                        <h3>// CREDENTIAL GATEWAY</h3>
+                        <form id="reg-form" style="margin-top: 15px;">
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; font-size: 0.85rem; margin-bottom: 5px;">DESIGNATED USERNAME</label>
+                                <input type="text" id="user" required autocomplete="off" style="width: 100%; background: #000; border: 1px solid currentColor; color: inherit; padding: 8px; box-sizing: border-box; font-family: inherit;">
+                            </div>
+                            <div style="margin-bottom: 15px;">
+                                <label style="display: block; font-size: 0.85rem; margin-bottom: 5px;">SECURITY PASSPHRASE</label>
+                                <input type="password" id="pass" required style="width: 100%; background: #000; border: 1px solid currentColor; color: inherit; padding: 8px; box-sizing: border-box; font-family: inherit;">
+                            </div>
+                            <button type="submit" class="alert-button" style="width: 100%; cursor: pointer; padding: 10px; font-weight: bold; font-family: inherit; margin-top: 5px;">INITIALIZE CREDENTIALS</button>
+                        </form>
+                        <div id="status" style="margin-top: 15px; font-size: 0.85rem; white-space: pre-wrap;"></div>
+                    </section>
+                </div>
+            </main>
         </div>
 
-        <!-- Layout Body -->
-        <div class="body-layout">
-            <!-- Sidebar Navigation -->
-            <div class="sidebar">
-                <a href="/" class="nav-link">CORE</a>
-                <a href="/overview.html" class="nav-link">OVERVIEW</a>
-                <a href="/archives.html" class="nav-link">ARCHIVES</a>
-                <a href="/projects.html" class="nav-link">PROJECTS</a>
-                <a href="/staffing.html" class="nav-link">STAFFING</a>
-                <a href="/register.html" class="nav-link active">UPLINK / REG</a>
-            </div>
+        <hr class="terminal-divider">
 
-            <!-- Main Content Form -->
-            <div class="content-area">
-                <h3 class="section-title">[ ACCOUNT INITIALIZATION PROTOCOL ]</h3>
-                
-                <form id="form">
-                    <div class="form-group">
-                        <label>// DESIGNATED USERNAME</label>
-                        <input type="text" id="user" required autocomplete="off">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>// SECURITY PASSPHRASE</label>
-                        <input type="password" id="pass" required>
-                    </div>
-                    
-                    <button type="submit">INITIALIZE CREDENTIALS</button>
-                </form>
-                
-                <div id="status"></div>
+        <footer class="terminal-footer">
+            <div class="footer-left">
+                <p>&copy; LOCALIZED DATA TERMINAL // PROPERTY OF IMPERIAL ADMINISTRATION</p>
             </div>
-        </div>
+            <div class="footer-right">
+                <a href="index.html" class="slicer-glitch">[RETURN TO MAIN ACCESS NODE]</a>
+            </div>
+        </footer>
     </div>
 
     <script>
+        const alertButton = document.getElementById('alert-toggle');
+        alertButton.addEventListener('click', () => {
+            alertButton.classList.toggle('active-alert');
+            alertButton.textContent = alertButton.classList.contains('active-alert') ? 'ALERT ON' : 'ALERT';
+        });
+
         const API_URL = 'https://api.praxonlabs.org/api/register';
 
-        document.getElementById('form').addEventListener('submit', async (e) => {
+        document.getElementById('reg-form').addEventListener('submit', async (e) => {
             e.preventDefault();
             const status = document.getElementById('status');
-            status.style.color = '#00aaaa';
             status.innerText = '> Transmitting telemetry data to core...';
 
             try {
@@ -209,15 +99,12 @@
                 });
                 const data = await res.json();
                 if (res.ok) {
-                    status.style.color = '#00ffff';
                     status.innerText = `> SUCCESS: ${data.message}`;
-                    document.getElementById('form').reset();
+                    document.getElementById('reg-form').reset();
                 } else {
-                    status.style.color = '#ff5555';
                     status.innerText = `> ERROR: ${data.error}`;
                 }
             } catch (err) {
-                status.style.color = '#ff5555';
                 status.innerText = '> ERROR: Uplink connection to backend server failed.';
             }
         });
