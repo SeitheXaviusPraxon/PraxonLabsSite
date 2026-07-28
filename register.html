@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Praxon Labs // REGISTER</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .setup-instructions-box {
+            display: none;
+            margin-top: 15px;
+            border: 1px solid currentColor;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            box-shadow: inset 0 0 15px rgba(0, 255, 255, 0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="scanlines"></div>
@@ -38,7 +51,7 @@
                 <section class="manifesto-section">
                     <h2>[ ACCOUNT INITIALIZATION PROTOCOL ]</h2>
                     <p class="manifesto-text">
-                        Enter designated credentials below to register a new user profile for the local server environment.
+                        Enter designated credentials below to register a new user profile for the local server environment, download the required client package, and review configuration parameters.
                     </p>
                 </section>
 
@@ -57,6 +70,26 @@
                             <button type="submit" class="alert-button" style="width: 100%; cursor: pointer; padding: 10px; font-weight: bold; font-family: inherit; margin-top: 5px;">INITIALIZE CREDENTIALS</button>
                         </form>
                         <div id="status" style="margin-top: 15px; font-size: 0.85rem; white-space: pre-wrap;"></div>
+                    </section>
+
+                    <section class="grid-card" style="grid-column: span 2; max-width: 450px; margin-top: 20px;">
+                        <h3>// CLIENT DEPLOYMENT</h3>
+                        <p style="margin-top: 10px; font-size: 0.9rem;">Access the secure client build package via external cloud repository:</p>
+                        <a href="https://drive.google.com/drive/folders/YOUR_FOLDER_ID" target="_blank" class="alert-button" style="display: inline-block; margin-top: 15px; text-decoration: none; text-align: center; padding: 8px 15px;">DOWNLOAD CLIENT (GOOGLE DRIVE)</a>
+                        
+                        <div style="margin-top: 25px;">
+                            <button id="toggle-instructions" class="alert-button" type="button" style="width: 100%; cursor: pointer; padding: 8px 15px; font-weight: bold; font-family: inherit;">[ TOGGLE SETUP INSTRUCTIONS ]</button>
+                            <div id="instructions-box" class="setup-instructions-box">
+[ CLIENT SETUP PROTOCOL ]
+--------------------------------------------------
+1. Download client ZIP from link.
+2. Unzip client installer (Anywhere).
+3. Run setup.exe from unzipped folder.
+4. [NOTICE]: In the setup/install wizard, install somewhere other than Program Files.
+5. Once installed, open the installation folder.
+6. Add realmlist.wtf file from unzipped folder to the "World Of Warcraft Classic" folder.
+7. Add wtf folder (with config folder inside) to "World Of Warcraft Classic" folder.</div>
+                        </div>
                     </section>
                 </div>
             </main>
@@ -87,6 +120,20 @@
                 alertAudio.pause();
                 alertButton.classList.remove('active-alert');
                 alertButton.textContent = 'ALERT';
+            }
+        });
+
+        // Toggle setup instructions box
+        const toggleBtn = document.getElementById('toggle-instructions');
+        const instructionsBox = document.getElementById('instructions-box');
+
+        toggleBtn.addEventListener('click', () => {
+            if (instructionsBox.style.display === 'block') {
+                instructionsBox.style.display = 'none';
+                toggleBtn.textContent = '[ TOGGLE SETUP INSTRUCTIONS ]';
+            } else {
+                instructionsBox.style.display = 'block';
+                toggleBtn.textContent = '[ HIDE SETUP INSTRUCTIONS ]';
             }
         });
 
