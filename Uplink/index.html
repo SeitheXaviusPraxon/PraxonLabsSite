@@ -9,6 +9,7 @@
 <body>
     <div class="scanlines"></div>
     <audio id="imperial-alert-audio" src="../imperial-alert.mp3" preload="auto" loop></audio>
+    
     <div class="terminal-container">
         <header class="terminal-header">
             <div class="header-left">
@@ -47,56 +48,6 @@
                         <h3>// ACCOUNT PROVISIONING</h3>
                         <p>Deploy a new localized network user record for active game client sessions.</p>
                         <a href="../register.html" class="alert-button" style="display: inline-block; margin-top: 15px; text-decoration: none; text-align: center; padding: 8px 15px;">ACCESS REGISTRATION</a>
-                    </section>
-                </div>
-            </main>
-        </div>
-
-        <hr class="terminal-divider">
-
-        <footer class="terminal-footer">
-            <div class="footer-left">
-                <p>&copy; LOCALIZED DATA TERMINAL // PROPERTY OF IMPERIAL ADMINISTRATION</p>
-            </div>
-            <div class="footer-right">
-                <a href="../index.html" class="slicer-glitch">[RETURN TO MAIN ACCESS NODE]</a>
-            </div>
-        </footer>
-    </div>
-
-    <script>
-        const alertButton = document.getElementById('alert-toggle');
-        const alertAudio = document.getElementById('imperial-alert-audio');
-
-        alertButton.addEventListener('click', () => {
-            if (alertAudio.paused) {
-                alertAudio.play();
-                alertButton.classList.add('active-alert');
-                alertButton.textContent = 'ALERT ON';
-            } else {
-                alertAudio.pause();
-                alertButton.classList.remove('active-alert');
-                alertButton.textContent = 'ALERT';
-            }
-        });
-    </script>
-</body>
-</html>            <main class="terminal-content">
-                <section class="manifesto-section">
-                    <h2>[ UPLINK NODE ]</h2>
-                    <p class="manifesto-text">
-                        The Uplink page supports encrypted communication and secure data transfer across site sectors. Use the sidebar to travel to other nodes.
-                    </p>
-                </section>
-
-                <div class="terminal-grid">
-                    <section class="grid-card">
-                        <h3>// CONNECTION STATUS</h3>
-                        <p>Review available uplink channels and active secure comms for mission-critical transmissions.</p>
-                    </section>
-                    <section class="grid-card">
-                        <h3>// ENCRYPTION HANDSHAKE</h3>
-                        <p>Placeholder terminal logic for secure transmissions and uplink payload execution.</p>
                     </section>
                 </div>
             </main>
