@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxon Labs // Account Gateway</title>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #00ff66;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .terminal {
+            background: #111827;
+            border: 1px solid #1f2937;
+            padding: 2rem;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.1);
+        }
+        h2 {
+            font-size: 1.1rem;
+            border-bottom: 1px solid #1f2937;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            color: #38bdf8;
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        input {
+            width: 100%;
+            background: #030712;
+            border: 1px solid #374151;
+            color: #fff;
+            padding: 0.5rem;
+            margin-top: 0.25rem;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        input:focus {
+            border-color: #00ff66;
+            outline: none;
+        }
+        button {
+            width: 100%;
+            background: #00ff66;
+            color: #030712;
+            border: none;
+            padding: 0.75rem;
+            margin-top: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: inherit;
+        }
+        button:hover {
+            background: #22c55e;
+        }
+        #status {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="terminal">
+        <h2>PRAXON LABS // MAINFRAME</h2>
+        <form id="form">
+            <label>NEW USERNAME</label>
+            <input type="text" id="user" required autocomplete="off">
+            
+            <label>NEW PASSWORD</label>
+            <input type="password" id="pass" required>
+            
+            <button type="submit">INITIALIZE ACCOUNT</button>
+        </form>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        const API_URL = 'https://api.praxonlabs.org/api/register';
+
+        document.getElementById('form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const status = document.getElementById('status');
+            status.style.color = '#94a3b8';
+            status.innerText = '> Transmitting payload...';
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: document.getElementById('user').value,
+                        password: document.getElementById('pass').value
+                    })
+                });
+                const data = await res.json();
+                if (res.ok) {
+                    status.style.color = '#00ff66';
+                    status.innerText = `> SUCCESS: ${data.message}`;
+                    document.getElementById('form').reset();
+                } else {
+                    status.style.color = '#ef4444';
+                    status.innerText = `> ERROR: ${data.error}`;
+                }
+            } catch (err) {
+                status.style.color = '#ef4444';
+                status.innerText = '> ERROR: Connection to backend failed.';
+            }
+        });
+    </script>
+</body>
+</html>
